@@ -94,39 +94,6 @@ export const getRouterData = app => {
     '/': {
       component: dynamicWrapper(app, ['user', 'login'], () => import('../layouts/BasicLayout')),
     },
-    '/exam/business':{
-      component: dynamicWrapper(app, [], () => import('../routes/Exam/Business'))
-    },
-    '/exam/show':{
-      component: dynamicWrapper(app, [], () => import('../routes/Exam/Show'))
-    },
-    
-    // 添加路由
-    // 中国联通 20190907 BY GUOQI
-    '/unicom/news':{
-      component: dynamicWrapper(app, [], () => import('../routes/Unicom/News'))
-    },
-    '/unicom/brand':{
-      component: dynamicWrapper(app, [], () => import('../routes/Unicom/Brand'))
-    },
-    '/unicom/business':{
-      component: dynamicWrapper(app, [], () => import('../routes/Unicom/Business'))
-    },
-    '/unicom/human':{
-      component: dynamicWrapper(app, [], () => import('../routes/Unicom/Human'))
-    },
-    '/unicom/society':{
-      component: dynamicWrapper(app, [], () => import('../routes/Unicom/Society'))
-    },
-    '/unicom/company':{
-      component: dynamicWrapper(app, [], () => import('../routes/Unicom/Company'))
-    },
-    '/unicom/service':{
-      component: dynamicWrapper(app, [], () => import('../routes/Unicom/Service'))
-    },
-    '/unicom/about':{
-      component: dynamicWrapper(app, [], () => import('../routes/Unicom/About'))
-    },
     '/dashboard/analysis': {
       component: dynamicWrapper(app, ['chart'], () => import('../routes/Dashboard/Analysis')),
     },
@@ -141,6 +108,7 @@ export const getRouterData = app => {
       // name: '工作台',
       // authority: 'admin',
     },
+    // 添加路由
     '/dashboard/test': {
       component: dynamicWrapper(app, [], () => import('../routes/Dashboard/newPage')),
     },

@@ -26,10 +26,4 @@ export default {
   disableDynamicImport: true,
   publicPath: '/',
   hash: true,
-  "proxy": {
-    "/test": {
-      "target": "http://localhost:8080/user/getall",
-      "changeOrigin": true
-    }
-  },
 };
