@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration><!-- mybatis配置文件的根节点 -->
+    <typeAliases>
+        <!-- 批量定义别名，扫描整个包下的类，别名就是类名 -->
+        <package name="com.unicom.model"/>
+    </typeAliases>
+    <mappers>
+        <!-- 自动扫描整个包下的类 -->
+        <package name="com.unicom.mapper" />
+    </mappers>
+    
+</configuration>
