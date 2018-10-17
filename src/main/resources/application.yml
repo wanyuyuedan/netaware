@@ -32,6 +32,9 @@ pagehelper:
     supportMethodsArguments: true
     params: count=countSql
 
+web:
+    sessionName: session_user
+
 
 
 

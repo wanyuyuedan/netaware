@@ -2,6 +2,7 @@ package com.unicom.controller;
 
 import com.unicom.model.User;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +15,8 @@ import javax.servlet.http.HttpSession;
 @RestController
 public class BaseController {
 
-    private String SESSION_KEY = "session_user";
+    @Value("${web.sessionName}")
+    private String SESSION_KEY;
     /**
      * 获取当前登录的用户
      * @param req
