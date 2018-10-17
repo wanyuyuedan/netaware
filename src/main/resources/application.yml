@@ -21,6 +21,8 @@ spring:
         logSlowSql: true
 
 mybatis:
+    mapper-locations: classpath:mapper/*.xml
+    type-aliases-package: com.unicom.model
     config-location: classpath:mybatis-config.xml
     
 
