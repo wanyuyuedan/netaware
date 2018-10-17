@@ -36,7 +36,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		if (session.getAttribute(SESSION_KEY) == null) {
 			System.out.println("用户未登录！");
-			//response.setStatus(403);
+			response.setStatus(403);
 			returnErrorResponse(response,new ErrorJson("用户未登录"));
 			return false;
 		}
