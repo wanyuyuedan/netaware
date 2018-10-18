@@ -22,7 +22,7 @@ public class StaComplaintRecord implements java.io.Serializable {
     private String lac;//纬度
     private String bigX;//X坐标
     private String bigY;//Y坐标
-    private Integer userEmotion;//用户情绪
+    private String userEmotion;//用户情绪
     private StaArea staArea;//小区编码
     private String reserved1;//预留1
     private String reserved2;//预留1
@@ -123,11 +123,11 @@ public class StaComplaintRecord implements java.io.Serializable {
         this.bigY = bigY;
     }
 
-    public Integer getUserEmotion() {
+    public String getUserEmotion() {
         return userEmotion;
     }
 
-    public void setUserEmotion(Integer userEmotion) {
+    public void setUserEmotion(String userEmotion) {
         this.userEmotion = userEmotion;
     }
 
