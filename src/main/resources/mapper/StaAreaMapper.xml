@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.unicom.mapper.StaAreaMapper">
+    <resultMap id="resultMap" type="StaArea">
+        <id column="area_id" property="areaId" jdbcType="VARCHAR"/>
+        <result column="area_name" property="areaName" jdbcType="VARCHAR"/>
+        <result column="reserved1" property="reserved1" jdbcType="VARCHAR"/>
+        <result column="reserved2" property="reserved2" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getByAreaId" parameterType="String" resultMap="resultMap">
+      select * from sta_area where area_id = #{areaId}
+  </select>
+
+    <select id="getAll" parameterType="StaArea" resultMap="resultMap">
+        select * from sta_area where 1=1
+        <if test="areaId != null">
+            and area_id = #{areaId}
+        </if>
+        <if test="areaName != null">
+            and area_name like concat(concat('%',#{areaName}),'%')
+        </if>
+    </select>
+
+    <select id="countAll" resultType="java.lang.Integer">
+        select count(*) from salesdetail where 1=1
+        <if test="areaId != null">
+            and area_id = #{areaId}
+        </if>
+        <if test="areaName != null">
+            and area_name like concat(concat('%',#{areaName}),'%')
+        </if>
+    </select>
+
+    <insert id="add" parameterType="StaArea">
+        insert into sta_area(area_id, area_name, reserved1, reserved2)
+        values(#{areaId}, #{areaName}, #{reserved1}, #{reserved2})
+    </insert>
+
+    <update id="update" parameterType="StaArea">
+        update sta_area set area_name = #{areaName},
+        reserved1=#{reserved1},reserved2 = #{reserved2}
+        where area_id = #{areaId}
+    </update>
+
+    <delete id="delete" parameterType="String">
+        delete from sta_area where area_id = #{areaId}
+    </delete>
+
+</mapper>
