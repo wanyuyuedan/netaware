@@ -1,5 +1,6 @@
 package com.unicom.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import io.swagger.annotations.ApiModel;
 
 import java.io.Serializable;
@@ -12,6 +13,7 @@ public class User implements Serializable {
 
     private Integer id;//id
     private String loginName;//登录账号
+    @JSONField(serialize=false)
     private String password;//登录密码
     private String userName;//姓名
 

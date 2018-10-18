@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpSession;
  * @date 2018/10/17
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/user")
 public class UserController extends BaseController {
 
@@ -42,7 +44,7 @@ public class UserController extends BaseController {
             return new ErrorJson("对不起，登录账号或密码不能为空！");
         }
         User u = userService.login(user.getLoginName(), user.getPassword());
-        u.setPassword(null);
+
         if (u == null) {
             return new ErrorJson("对不起，登录失败！");
         } else {
