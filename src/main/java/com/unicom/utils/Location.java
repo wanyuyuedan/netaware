@@ -26,11 +26,11 @@ public class Location {
         if((x1-x2)>0 && (y1 -y2)>0){
             if((x1-x2) < width && (y1-y2) < high) {
                 //	System.out.println("a1");
-                return "a"+1;
+                return "A"+1;
             }
             if(((x1-x2) % width) >0 && ((y1-y2) % high) > 0) {
                 //System.out.println("a"+(((x1-x2) / width) *((y1-y2) / high) +1));
-                return "a"+(((x1-x2) / width) *((y1-y2) / high) +1);
+                return "A"+(((x1-x2) / width) *((y1-y2) / high) +1);
             }
 
         }
