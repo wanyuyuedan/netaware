@@ -25,7 +25,7 @@
     </select>
 
     <select id="countAll" resultType="java.lang.Integer">
-        select count(*) from salesdetail where 1=1
+        select count(*) from sta_area where 1=1
         <if test="areaId != null">
             and area_id = #{areaId}
         </if>

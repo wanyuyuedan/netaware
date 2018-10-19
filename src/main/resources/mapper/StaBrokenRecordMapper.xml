@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.unicom.mapper.StaBrokenRecordMapper">
+    <resultMap id="resultMap" type="StaBrokenRecord">
+        <id column="broken_num" property="brokenNum"/>
+        <result column="isrecovery" property="isrecovery"/>
+        <result column="broken_type" property="brokenType"/>
+        <result column="broken_time" property="brokenTime"/>
+        <result column="recover_time" property="recoverTime"/>
+        <result column="broken_reason" property="brokenReason"/>
+        <result column="broken_address" property="brokenAddress"/>
+        <result column="reserved1" property="reserved1"/>
+        <result column="reserved2" property="reserved2"/>
+        <association property="staArea" javaType="StaArea">
+            <id column="area_id" property="areaId"/>
+            <result column="area_name" property="areaName"/>
+            <result column="area_reserved1" property="reserved1"/>
+            <result column="area_reserved2" property="reserved2"/>
+        </association>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        a.*,b.area_name,
+        b.reserved1 area_reserved1,
+        b.reserved2 area_reserved2
+  </sql>
+    <sql id="Base_Where">
+        <where>
+            and a.area_id = b.area_id
+            <choose>
+                <when test="brokenNum != null and brokenNum!=''">
+                    and broken_num = #{brokenNum}
+                </when>
+                <when test="staId != null and staId!=''">
+                    and sta_id = #{staId}
+                </when>
+                <when test="brokenAddress != null and brokenAddress !=''">
+                    and broken_address like concat('%',#{brokenAddress},"%")
+                </when>
+                <when test="brokenType != null and brokenType!=''">
+                    and broken_type = #{brokenType}
+                </when>
+                <when test="staArea!=null and staArea.areaId != null and staArea.areaId!=''">
+                    and b.area_id = #{staArea.areaId}
+                </when>
+            </choose>
+        </where>
+    </sql>
+    <select id="getById" parameterType="String" resultMap="resultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sta_broken_record a,sta_area b
+        <include refid="Base_Where"/>
+    </select>
+
+    <select id="getAll" parameterType="StaBrokenRecord" resultMap="resultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sta_broken_record a,sta_area b
+        <include refid="Base_Where"/>
+
+    </select>
+
+    <select id="countAll" resultType="java.lang.Integer">
+        select count(*) from sta_broken_record a,sta_area b
+        <include refid="Base_Where"/>
+    </select>
+
+    <insert id="add" parameterType="StaBrokenRecord">
+        insert into sta_broken_record set
+  			broken_num = #{brokenNum},
+  			sta_id = #{staId},
+  			isrecovery = #{isrecovery},
+  			broken_type = #{brokenType},
+  			broken_time = #{brokenTime},
+  			recover_time = #{recoverTime},
+  			broken_reason = #{brokenReason},
+  			broken_address = #{brokenAddress},
+            <if test="staArea!=null and staArea.areaId!=null and staArea.areaId!=''">
+                area_id = #{staArea.areaId},
+            </if>
+  			reserved1 = #{reserved1},
+  			reserved2 = #{reserved2}
+    </insert>
+
+    <update id="update" parameterType="StaBrokenRecord">
+        update sta_broken_record set
+        sta_id = #{staId},
+        isrecovery = #{isrecovery},
+        broken_type = #{brokenType},
+        broken_time = #{brokenTime},
+        recover_time = #{recoverTime},
+        broken_reason = #{brokenReason},
+        broken_address = #{brokenAddress},
+        <if test="staArea!=null and staArea.areaId!=null and staArea.areaId!=''">
+            area_id = #{staArea.areaId},
+        </if>
+        reserved1 = #{reserved1},
+        reserved2 = #{reserved2}
+        where broken_num = #{brokenNum}
+    </update>
+
+    <delete id="delete" parameterType="String">
+        delete from sta_broken_record where broken_num = #{brokenNum}
+    </delete>
+
+</mapper>

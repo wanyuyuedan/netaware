@@ -32,15 +32,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		String contextPath = request.getContextPath();
 		String url = requestUri.substring(contextPath.length());
 		
-		
-		HttpSession session = request.getSession();
+		return true;
+		/*HttpSession session = request.getSession();
 		if (session.getAttribute(SESSION_KEY) == null) {
 			System.out.println("用户未登录！");
 			response.setStatus(403);
 			returnErrorResponse(response,new ErrorJson("用户未登录"));
 			return false;
 		}
-		return true;
+		return true;*/
 	}
 
 	public void returnErrorResponse(HttpServletResponse response, Json json)

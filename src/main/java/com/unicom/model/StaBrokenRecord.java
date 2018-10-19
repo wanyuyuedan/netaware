@@ -19,7 +19,7 @@ public class StaBrokenRecord implements java.io.Serializable {
     @JSONField(format="yyyy-MM-dd hh:mm:ss")
     private Date recoverTime;//恢复时间
     private String brokenReason;//故障原因
-    private Integer brokenAddress;//故障位置
+    private String brokenAddress;//故障位置
     private StaArea staArea;//小区编码
     private String reserved1;//预留1
     private String reserved2;//预留1
@@ -80,11 +80,11 @@ public class StaBrokenRecord implements java.io.Serializable {
         this.brokenReason = brokenReason;
     }
 
-    public Integer getBrokenAddress() {
+    public String getBrokenAddress() {
         return brokenAddress;
     }
 
-    public void setBrokenAddress(Integer brokenAddress) {
+    public void setBrokenAddress(String brokenAddress) {
         this.brokenAddress = brokenAddress;
     }
 

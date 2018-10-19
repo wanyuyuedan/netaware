@@ -3,5 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration><!-- mybatis配置文件的根节点 -->
-    
+    <settings>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
 </configuration>
