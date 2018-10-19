@@ -60,7 +60,7 @@
         <include refid="Base_Column_List"/>
         from sta_broken_record a,sta_area b
         <include refid="Base_Where"/>
-
+        order by a.isrecovery asc
     </select>
 
     <select id="countAll" resultType="java.lang.Integer">

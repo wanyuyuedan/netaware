@@ -65,7 +65,11 @@ public class StaComplaintRecordController extends BaseController {
             return new ErrorJson("投诉编号和投诉编码不能为空！");
         }
         System.out.printf(record.toString());
-        //String id = AppUtil.getUUID();
+        if(record.getComplaintNum()==null||"".equals(record.getComplaintNum())){
+            String id = AppUtil.getNowTime();
+            record.setComplaintNum(id);
+        }
+
         double x,y;
         if(record.getLng()!=null && record.getLac() !=null){
             x = Double.parseDouble(record.getLng());
@@ -80,7 +84,6 @@ public class StaComplaintRecordController extends BaseController {
             System.out.printf(record.getStaArea().toString());
         }
 
-        //record.setComplaintNum(id);
         service.add(record);
         return new SuccessJson("添加成功!",record);
 
