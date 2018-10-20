@@ -49,6 +49,9 @@
                 <when test="downType != null and downType!=''">
                     and down_type = #{downType}
                 </when>
+                <when test="downAppear != null and downAppear!=''">
+                    and down_appear = #{downAppear}
+                </when>
                 <when test="netType != null and netType!=''">
                     and net_Type = #{netType}
                 </when>
