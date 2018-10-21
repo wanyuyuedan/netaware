@@ -23,7 +23,12 @@ public class Pager implements Serializable {
 	public void setRows(Integer rows) {
 		this.rows = rows;
 	}
-	
-	
 
+	@Override
+	public String toString() {
+		return "Pager{" +
+				"page=" + page +
+				", rows=" + rows +
+				'}';
+	}
 }

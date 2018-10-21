@@ -1,6 +1,7 @@
 package com.unicom.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
@@ -14,7 +15,7 @@ public class StaComplaintRecord implements java.io.Serializable {
     private String downAppear;//故障现象
     private String mobileNum;//手机号码
     private String complaintAddress;//投诉地址
-    @JSONField(format="yyyy-MM-dd hh:mm:ss")
+    @JSONField(format="yyyy-MM-dd")
     private Date createTime;//登记时间
     private String netType;//网络类型
     private Integer isRecovery;//恢复与否（0,1）

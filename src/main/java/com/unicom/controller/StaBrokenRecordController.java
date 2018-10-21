@@ -49,7 +49,9 @@ public class StaBrokenRecordController extends BaseController {
     @ApiOperation(value="批量查询接口", notes="test:返回json格式，success=true为成功否则为失败")
     @ApiImplicitParam(paramType="query", name = "brokenNum", value = "断站编号", required = true, dataType = "String")
     public PageData queryBybrokenNum(StaBrokenRecord record,Pager pager, HttpServletRequest req){
-
+        System.out.printf(record!=null?record.toString():null);
+        System.out.printf(pager!=null?pager.toString():null);
+        System.out.printf("===========================");
         List<StaBrokenRecord> list = service.getAll(record,pager);
         int total = service.countAll(record);
         PageData pageData = new PageData(list,total);

@@ -1,6 +1,7 @@
 package com.unicom;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson.serializer.ValueFilter;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import org.mybatis.spring.annotation.MapperScan;
@@ -14,6 +15,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
@@ -32,6 +34,12 @@ public class NetawareApplication {
         List<MediaType> fastMediaTypes = new ArrayList<>();
         fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
         fastConverter.setSupportedMediaTypes(fastMediaTypes);
+        fastJsonConfig.setSerializeFilters((ValueFilter) (o, s, source) -> {
+            if (source == null) {
+                return "";//此处是关键,如果返回对象的变量为null,则自动变成""
+            }
+            return source;
+        });
         // 3.在converter中添加配置信息
         fastConverter.setFastJsonConfig(fastJsonConfig);
         // 4.将converter赋值给HttpMessageConverter
